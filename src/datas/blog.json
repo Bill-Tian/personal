@@ -1,0 +1,28 @@
+[{
+        "id": "1",
+        "creatime": "2021-11-30",
+        "title": "JS 数据类型",
+        "content": "1. ES5 6种：Number，String，Boolean，undefined，null，object。（NaN 是 Number 中的一种，非Number 。Number 中的特殊数值）。2.ES6 新增 symbol。3.ES10 新增了 bigInt, 数据长整型，提供了一种方法来表示大于 2^53 - 1 的整数。4.Object中又包含：Date，Array，function三种类型。",
+        "hot": "3200",
+        "like": "2",
+        "imgurl": ""
+    },
+    {
+        "id": "2",
+        "creatime": "2021-12-01",
+        "title": "Set 和 Map 数据结构",
+        "content": "Set本身是一个构造函数， 用来生成Set数据结构。 Set结构不会添加重复的值。向Set加入值的时候， 不会发生类型转换， 加入 '5'和5是两个不同的值。",
+        "hot": "6890",
+        "like": "3",
+        "imgurl": ""
+    },
+    {
+        "id": "3",
+        "creatime": "2021-11-30",
+        "title": "数据类型和引用数据类型的区别",
+        "content": "1、基本数据类型和引用数据类型。ECMAScript包括两个不同类型的值： 基本数据类型和引用数据类型。基本数据类型指的是简单的数据段， 引用数据类型指的是有多个值构成的对象。当我们把变量赋值给一个变量时， 解析器首先要确认的就是这个值是基本类型值还是引用类型值。",
+        "hot": "3200",
+        "like": "2",
+        "imgurl": ""
+    }
+]

@@ -1,64 +1,52 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-10-20 11:02:30
- * @LastEditTime: 2021-10-25 15:20:58
+ * @LastEditTime: 2021-12-02 17:28:37
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
 <template>
-  <headers></headers>
-  <!-- <div id="nav">
-    <router-link to="/">首页</router-link>
-    <router-link to="/work">作品</router-link>
-    <router-link to="/notes">笔记</router-link>
-    <router-link to="/about">关于</router-link>
+  <section>
+    <headers></headers>
 
-    <div style="display: inline-block; float: right">
-      <el-tooltip content="QQ:945119403" placement="bottom" effect="light">
-        <img
-          style="width: 30px; margin: 0 10px"
-          src="./assets/images/icon/QQ.png"
-          alt=""
-        />
-      </el-tooltip>
-      <el-tooltip
-        content="Email:945119403@qq.com"
-        placement="bottom"
-        effect="light"
-      >
-        <img
-          style="width: 30px; margin: 0 10px"
-          src="./assets/images/icon/email.png"
-          alt=""
-        />
-      </el-tooltip>
-    </div>
-  </div> -->
+    <router-view />
 
-  <router-view />
+    <foot></foot>
 
-  <div
-    id="foot"
-    style="border-top: 1px solid #cccccc; margin: 0 60px; margin-top: 30px"
-  >
-    <div
-      style="text-align: center; font-size: 13px; color: #868686; padding: 5px"
-    >
-      <p>野生大学自由专业 / 互联网游民 / 冰红茶再来一瓶</p>
-      <p>QQ邮箱：pmdaohang@qq.com / QQ群：491931182 / 微信公众号：世界是棵树</p>
-      <p>Copyright © 2020 世界是棵树</p>
-    </div>
-  </div>
+    <div id="aplayer"></div>
+  </section>
 </template>
 <script>
 import headers from "@/views/Header";
+import foot from "./views/Foot.vue";
+import APlayer from "aplayer";
+import "aplayer/dist/APlayer.min.css";
+import music from "./datas/music.json";
 export default {
   components: {
     headers,
+    foot,
+  },
+  mounted() {
+    new APlayer({
+      container: document.getElementById("aplayer"),
+      fixed: true,
+      lrcType: 1,
+      audio: music,
+    });
+    console.log(
+      "%c Mr.Tian %c http://tktown.top ",
+      "color: #fadfa3; background: #030307; ",
+      "background: #ffffff;"
+    );
   },
 };
 </script>
 <style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -83,5 +71,17 @@ export default {
       color: #f23051;
     }
   }
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(228, 220, 220);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fc3f3f;
 }
 </style>

@@ -1,7 +1,7 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-10-25 11:06:46
- * @LastEditTime: 2021-10-25 15:00:25
+ * @LastEditTime: 2021-11-05 17:24:05
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
@@ -19,7 +19,7 @@
 
     <div class="nav nav1">
       <li>
-        <a href="javascript:void(0)">
+        <router-link to="/">
           <svg
             t="1635141762046"
             class="icon"
@@ -38,10 +38,10 @@
           </svg>
           首页
           <span></span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="javascript:void(0)">
+        <router-link to="/work">
           <svg
             t="1635141836567"
             class="icon"
@@ -60,10 +60,10 @@
           </svg>
           归档
           <span></span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="javascript:void(0)">
+        <router-link to="/links">
           <svg
             t="1635141866095"
             class="icon"
@@ -82,10 +82,10 @@
           </svg>
           链接
           <span></span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="javascript:void(0)">
+        <router-link to="/music">
           <svg
             t="1635141887464"
             class="icon"
@@ -104,10 +104,10 @@
           </svg>
           音乐
           <span></span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="javascript:void(0)">
+        <router-link to="/about">
           <svg
             style="
               margin-right: 0.5rem;
@@ -133,7 +133,7 @@
           </svg>
           关于
           <span></span>
-        </a>
+        </router-link>
       </li>
     </div>
   </div>
@@ -143,11 +143,7 @@
 export default {};
 </script>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-}
+<style scoped>
 li,
 a {
   text-decoration: none;
