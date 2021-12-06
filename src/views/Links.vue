@@ -1,7 +1,7 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-11-05 17:20:06
- * @LastEditTime: 2021-11-29 11:29:33
+ * @LastEditTime: 2021-12-06 11:55:17
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
@@ -16,30 +16,16 @@
     <span class="work">Here are some links.</span>
   </div>
 
-  <div>
-    <ul>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-    </ul>
-  </div>
+  <alink></alink>
 </template>
 
 <script>
-export default {};
+import alink from "./links/link.vue";
+export default {
+  components: {
+    alink,
+  },
+};
 </script>
 
 <style lang="less" scoped>
