@@ -1,7 +1,7 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-10-20 11:02:30
- * @LastEditTime: 2021-12-02 14:40:40
+ * @LastEditTime: 2021-12-09 09:05:36
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
@@ -66,7 +66,7 @@ export default {
   name: "Home",
   data() {
     return {
-      isTop: false,
+      isTop: true,
       iconList: [
         {
           id: 1,

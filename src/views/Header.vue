@@ -1,19 +1,19 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-10-25 11:06:46
- * @LastEditTime: 2021-11-05 17:24:05
+ * @LastEditTime: 2022-01-12 14:13:08
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
 
 <template>
-  <div class="site-top">
+  <header class="site-top">
     <div class="site-branding">
       <a href="https://sakura.2heng.xin">
-        <img
+        <!-- <img
           style="width: 200px"
           src="https://sakura.2heng.xin/wp-content/uploads/2018/06/mashiro-logo.png"
-        />
+        /> -->
       </a>
     </div>
 
@@ -136,7 +136,7 @@
         </router-link>
       </li>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -203,6 +203,7 @@ a {
   box-shadow: rgb(0 0 0 / 50%) 0px 1px 40px -8px;
   width: 100%;
   z-index: 100;
+  height: 65px;
 }
 svg {
   margin-right: 0.5rem;

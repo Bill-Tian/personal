@@ -1,79 +1,71 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-12-06 11:51:34
- * @LastEditTime: 2021-12-06 18:11:51
+ * @LastEditTime: 2021-12-08 17:41:18
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
 <template>
   <div class="link-box">
-    <p>
+    <p class="top">
       这里是一些前端学习的相关链接，包括了一些前端学习网站、前端博客网站、前端开发小工具、日常资料查询等，前端工程师的居家旅行生活必备，让我们一起探索吧！
     </p>
 
-    <div>
-      <h3>前端工具</h3>
-      <div>
-        <article>
-          <div class="links">
-            <ul>
-              <li class="eachli" v-for="item in tagsList" :key="item.id">
-                <a href="" title="gitHub" class="link-item">
-                  <img src="./../../assets/images/u159.png" alt="" />
-                  <span class="sitename">GitHub</span>
-                  <div class="linkdes">代码仓库</div>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </article>
-      </div>
+    <div class="middle">
+      <article v-for="list in linkList" :key="list.id">
+        <h3 class="title">{{ list.title }}</h3>
+        <div class="links">
+          <ul>
+            <li class="eachli" v-for="item in list.list" :key="item.id">
+              <a
+                :href="item.link"
+                :title="item.des"
+                class="link-item"
+                target="_blank"
+              >
+                <img :src="item.url" alt="" />
+                <span class="sitename">{{ item.label }}</span>
+                <div class="linkdes">{{ item.des }}</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
     </div>
   </div>
 </template>
 
 <script>
+import { linkEnum } from "../../datas/link";
 export default {
   data() {
     return {
-      tagsList: [
-        {
-          id: 1,
-          label: "github",
-          des: "代码仓库",
-          url: require("./../../assets/images/u159.png"),
-        },
-        {
-          id: 2,
-          label: "github",
-          des: "代码仓库",
-          url: require("./../../assets/images/u159.png"),
-        },
-        {
-          id: 3,
-          label: "github",
-          des: "代码仓库",
-          url: require("./../../assets/images/u159.png"),
-        },
-        {
-          id: 4,
-          label: "github",
-          des: "代码仓库",
-          url: require("./../../assets/images/u159.png"),
-        },
+      linkList: [
+        { id: 1, title: "前端工具", list: linkEnum.toolsList },
+        { id: 2, title: "前端博客", list: linkEnum.blogsList },
+        { id: 3, title: "学习文章", list: linkEnum.studyList },
       ],
     };
   },
 };
 </script>
 
-<style>
+<style lang="less">
 .link-box {
   max-width: 900px;
   padding: 0 10px;
   margin-left: auto;
   margin-right: auto;
   background-color: rgba(255, 255, 255, 0.8);
+  .top {
+    margin: 20px 10px;
+    line-height: 30px;
+  }
+  .middle {
+    .title {
+      margin: 10px;
+    }
+  }
 }
 .links ul {
   display: flex;

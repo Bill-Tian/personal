@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Tian
  * @Date: 2021-10-20 11:02:30
- * @LastEditTime: 2021-12-02 11:34:07
+ * @LastEditTime: 2022-01-12 09:46:12
  * @LastEditors: Mr.Tian
  * @Description: 
  */
@@ -12,5 +12,10 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import "./assets/iconfont/iconfont.css"
 
-createApp(App).use(router).use(ElementPlus).mount('#app');
-// createApp(App).use(ElementPlus)
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
+import 'github-markdown-css'
+
+createApp(App).use(router).use(ElementPlus).use(mavonEditor).mount('#app');
+// createApp(App).use(mavonEditor)

@@ -1,7 +1,7 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-11-05 17:14:31
- * @LastEditTime: 2021-11-29 11:32:19
+ * @LastEditTime: 2021-12-09 10:13:39
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
@@ -19,26 +19,7 @@
 
   <audio src="m.mp3" controls></audio>
 
-  <div>
-    <ul>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-      <li>231321231</li>
-    </ul>
-  </div>
+  <div></div>
 </template>
 
 <script>

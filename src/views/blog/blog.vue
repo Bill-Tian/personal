@@ -1,7 +1,7 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-11-29 11:43:42
- * @LastEditTime: 2021-12-02 09:44:30
+ * @LastEditTime: 2022-01-13 11:39:45
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
@@ -16,7 +16,7 @@
 
     <!--聚焦栏-->
     <div class="feature">
-      <h1 class="title">
+      <h1>
         <span class="iconfont icon-notification"></span>
         <span>聚焦</span>
       </h1>
@@ -38,59 +38,144 @@
 
     <!-- Discovery栏 -->
     <div class="discovery">
-      <h1 class="title">
+      <h1>
         <span class="iconfont icon-notification"></span>
         <span>Discovery</span>
       </h1>
 
       <article
         class="article"
-        v-for="(item, index) in blog"
-        :key="item.id"
+        v-for="(item, index) in tableData"
+        :key="item._id"
         :style="{ flexDirection: index % 2 == 1 ? 'row-reverse' : 'row' }"
+        @click="toDetail(item)"
       >
         <div class="picture-box">
-          <a href="" :class="{ radl: index % 2 == 0, radr: index % 2 == 1 }">
-            <img src="./../../assets/images/hansjorg.jpg" alt="" />
+          <a
+            @click="toDetail(item)"
+            :class="{ radl: index % 2 == 0, radr: index % 2 == 1 }"
+          >
+            <img
+              :src="
+                'https://cdn.jsdelivr.net/gh/Bill-Tian/Picture-library@master/img/' +
+                item.imgName
+              "
+              alt=""
+            />
           </a>
         </div>
         <div class="word-box">
           <div>
             <div class="time">
-              <span class="iconfont icon-notification"></span>
-              <span>发布于</span>
-              <span>{{ item.creatime }}--{{ index }}</span>
+              <span class="iconfont icon-notification iconR10"></span>
+              <span class="mar5">发布于</span>
+              <span>{{ item.createdAt }}</span>
             </div>
             <a href="" class="titles">
               <h3>{{ item.title }}</h3>
             </a>
             <div class="hots">
-              <span>
-                <i class="iconfont icon-notification"></i>
-                {{ item.hot }} 热度
+              <span class="span-box">
+                <span class="iconfont icon-view iconR10"></span>
+                <span class="mar5">{{ item.viewCount }} </span>
+                <span>查看</span>
               </span>
-              <span>
-                <i class="iconfont icon-notification"></i>
-                <span>{{ item.like }}</span>
+              <span class="span-box">
+                <span class="iconfont icon-like iconR10"></span>
+                <span class="mar5">{{ item.favoritesCount }}</span>
                 <span>点赞</span>
               </span>
             </div>
             <div class="contents">
               <p>
-                {{ item.content }}
+                {{ item.description }}
               </p>
               <div></div>
             </div>
           </div>
         </div>
       </article>
+
+      <div class="loading">
+        <button v-if="!loading && !isShow" @click="loadMore">加载更多</button>
+        <button v-if="isShow">没有啦，已经到底了！</button>
+        <el-table v-if="loading" v-loading="loading" style="width: 100%">
+        </el-table>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import blog from "./../../datas/blog.json";
+import { ref, reactive } from "vue";
+import axios from "axios";
+import moment from "moment";
+import { useRouter } from "vue-router";
+
 export default {
+  setup() {
+    const tableData = ref([]);
+    const loading = ref(false);
+    const isShow = ref(false);
+    // 查询参数
+    const query = reactive({
+      pageIndex: 1,
+      pageSize: 10,
+    });
+
+    const router = useRouter();
+    // 获取blog表格数据
+    const getListOfData = () => {
+      axios({
+        method: "get",
+        url: "/api/article",
+        params: query,
+      }).then((res) => {
+        if (res) {
+          let tableDatas = res.data.article;
+          tableDatas.forEach((item) => {
+            item.createdAt = moment(item.createdAt).format("YYYY-MM-DD");
+          });
+          // tableData.value = tableDatas;
+          tableData.value = tableData.value.concat(tableDatas);
+          loading.value = false;
+          let index = query.pageIndex * query.pageSize;
+          if (index >= res.data.articlesCount) {
+            isShow.value = true;
+          }
+        }
+      });
+    };
+    getListOfData();
+
+    // 加载更多
+    const loadMore = () => {
+      loading.value = true;
+      query.pageIndex += 1;
+      getListOfData();
+    };
+
+    // 跳转到详情页面
+    const toDetail = (item) => {
+      console.log(item);
+      router.push({
+        path: "/blogDetail",
+        query: {
+          id: item._id,
+        },
+      });
+    };
+
+    return {
+      tableData,
+      loading,
+      isShow,
+      toDetail,
+      loadMore,
+    };
+  },
+
   data() {
     return {
       blog,
@@ -116,6 +201,7 @@ export default {
       ],
     };
   },
+  methods: {},
 };
 </script>
 
@@ -271,9 +357,19 @@ export default {
   .word-box {
     padding: 20px;
     width: 40%;
+    .iconR10 {
+      margin-right: 10px;
+    }
+    .mar5 {
+      margin-right: 5px;
+    }
     .time {
       color: #888;
       font-size: 13px;
+      display: flex;
+      align-items: center;
+      height: 20px;
+      line-height: 20px;
     }
     .titles {
       text-decoration: none;
@@ -283,8 +379,14 @@ export default {
       }
     }
     .hots {
+      display: flex;
       color: #888;
       font-size: 13px;
+      .span-box {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+      }
     }
     .contents {
       color: rgba(0, 0, 0, 0.66);
@@ -292,6 +394,28 @@ export default {
         margin: 20px 0px;
       }
     }
+  }
+}
+
+.loading {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  margin: 40px 0;
+  display: inline-block;
+  button {
+    padding: 13px 35px;
+    border: 1px solid #d6d6d6;
+    border-radius: 50px;
+    color: #adadad;
+    background: none;
+    cursor: pointer;
+    transition: color 0.2s ease-out, border 0.2s ease-out, opacity 0.2s ease-out;
+  }
+  button:hover {
+    border-color: #fe9600;
+    color: #fe9600;
+    box-shadow: 0 0 4px #fe9600;
   }
 }
 </style>

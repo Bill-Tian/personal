@@ -1,26 +1,21 @@
 <!--
  * @Author: Mr.Tian
  * @Date: 2021-11-04 14:48:32
- * @LastEditTime: 2021-12-02 17:16:21
+ * @LastEditTime: 2022-01-13 09:51:41
  * @LastEditors: Mr.Tian
  * @Description: 
 -->
 <template>
-  <div
-    id="foot"
-    style="border-top: 1px solid #cccccc; margin: 0 60px; margin-top: 30px"
-  >
-    <div
-      style="text-align: center; font-size: 13px; color: #868686; padding: 5px"
-    >
-      <p style="font-size: 16px">
+  <footer id="foot" class="footers">
+    <div class="fot-box">
+      <p class="author">
         Created by
-        <span style="color: #f05228" class="iconfont icon-love"></span> Mr.Tian
+        <span class="iconfont icon-love"></span> Mr.Tian
       </p>
 
-      <p style="font-size: 16px">
+      <p class="copyright">
+        <span>Copyright © 2022 Tian Inc. and its affiliates. </span>
         <a
-          style="text-decoration: none"
           href="https://beian.miit.gov.cn"
           target="_blank"
           rel="noopener noreferrer"
@@ -28,12 +23,35 @@
         >
       </p>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style>
+<style lang="less">
+.footers {
+  margin: 50px 60px;
+  .fot-box {
+    text-align: center;
+    font-size: 13px;
+    color: #868686;
+    padding: 5px;
+  }
+}
+.author {
+  font-size: 16px;
+  span {
+    color: #f05228;
+  }
+}
+.copyright {
+  font-size: 14px;
+  margin: 5px 0;
+  a {
+    text-decoration: none;
+    color: #fe9600;
+  }
+}
 </style>

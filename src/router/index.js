@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Tian
  * @Date: 2021-10-20 11:02:30
- * @LastEditTime: 2021-11-26 16:11:34
+ * @LastEditTime: 2022-01-12 14:39:21
  * @LastEditors: Mr.Tian
  * @Description: 
  */
@@ -26,27 +26,32 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/work',
     name: 'Work',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Work.vue')
+    component: () => import(/* webpackChunkName: "work" */ '../views/Work.vue')
   },
   {
     path: '/notes',
     name: 'Notes',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Notes.vue')
+    component: () => import(/* webpackChunkName: "notes" */ '../views/Notes.vue')
   },
   {
     path: '/links',
     name: 'Links',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Links.vue')
+    component: () => import(/* webpackChunkName: "links" */ '../views/Links.vue')
   },
   {
     path: '/music',
     name: 'Music',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Music.vue')
+    component: () => import(/* webpackChunkName: "music" */ '../views/Music.vue')
+  },
+  {
+    path: '/blogDetail',
+    name: 'BlogDetail',
+    component: () => import(/* webpackChunkName: "blogDetail" */ '../views/blog/blogDetail.vue')
   },
 ]
 
